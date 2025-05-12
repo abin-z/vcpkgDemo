@@ -79,3 +79,5 @@ rules.ninja
 
 # 生成的编译命令文件
 compile_commands.json
+
+CMakeUserPresets.json
