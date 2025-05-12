@@ -25,6 +25,7 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 project(vcpkgDemo LANGUAGES C CXX VERSION 0.9.0)
 
 find_package(fmt CONFIG REQUIRED)
+find_package(CLI11 CONFIG REQUIRED)
 
 # 启用测试功能
 include(CTest)  # 启用 CTest 框架
