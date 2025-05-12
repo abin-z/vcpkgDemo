@@ -1,6 +1,7 @@
 {
   "dependencies": [
+    "cli11",
     "fmt",
-    "cli11"
+    "nlohmann-json"
   ]
 }
