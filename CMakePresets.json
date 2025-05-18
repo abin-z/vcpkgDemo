@@ -2,24 +2,79 @@
   "version": 3,
   "configurePresets": [
     {
-      "name": "vcpkg-linux",
-      "displayName": "vcpkg-linux",
-      "description": "Use Ninja generator and vcpkg toolchain from /opt/vcpkg",
+      "name": "base",
+      "hidden": true,
       "generator": "Ninja",
-      "binaryDir": "${sourceDir}/build",
+      "binaryDir": "${sourceDir}/build/${presetName}",
+      "cacheVariables": {
+        "CMAKE_EXPORT_COMPILE_COMMANDS": true
+      }
+    },
+    {
+      "name": "linux-base",
+      "hidden": true,
+      "inherits": "base",
       "cacheVariables": {
         "CMAKE_TOOLCHAIN_FILE": "/opt/vcpkg/scripts/buildsystems/vcpkg.cmake"
       }
     },
     {
-      "name": "vcpkg-windows",
-      "displayName": "vcpkg-windows",
-      "description": "Use Ninja generator and vcpkg toolchain from D:/DevTools/vcpkg",
-      "generator": "Ninja",
-      "binaryDir": "${sourceDir}/build",
+      "name": "windows-base",
+      "hidden": true,
+      "inherits": "base",
       "cacheVariables": {
-        "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
+        "CMAKE_TOOLCHAIN_FILE": "D:/DevTools/vcpkg/scripts/buildsystems/vcpkg.cmake"
       }
+    },
+    {
+      "name": "vcpkg-linux-debug",
+      "displayName": "Linux Debug (vcpkg)",
+      "inherits": "linux-base",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+    {
+      "name": "vcpkg-linux-release",
+      "displayName": "Linux Release (vcpkg)",
+      "inherits": "linux-base",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release"
+      }
+    },
+    {
+      "name": "vcpkg-windows-debug",
+      "displayName": "Windows Debug (vcpkg)",
+      "inherits": "windows-base",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+    {
+      "name": "vcpkg-windows-release",
+      "displayName": "Windows Release (vcpkg)",
+      "inherits": "windows-base",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "build-linux-debug",
+      "configurePreset": "vcpkg-linux-debug"
+    },
+    {
+      "name": "build-linux-release",
+      "configurePreset": "vcpkg-linux-release"
+    },
+    {
+      "name": "build-windows-debug",
+      "configurePreset": "vcpkg-windows-debug"
+    },
+    {
+      "name": "build-windows-release",
+      "configurePreset": "vcpkg-windows-release"
     }
   ]
 }
