@@ -2,8 +2,8 @@
   "version": 3,
   "configurePresets": [
     {
-      "name": "ninja-vcpkg",
-      "displayName": "ninja-vcpkg",
+      "name": "vcpkg-linux",
+      "displayName": "vcpkg-linux",
       "description": "Use Ninja generator and vcpkg toolchain from /opt/vcpkg",
       "generator": "Ninja",
       "binaryDir": "${sourceDir}/build",
