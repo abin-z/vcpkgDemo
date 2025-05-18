@@ -10,6 +10,16 @@
       "cacheVariables": {
         "CMAKE_TOOLCHAIN_FILE": "/opt/vcpkg/scripts/buildsystems/vcpkg.cmake"
       }
+    },
+    {
+      "name": "vcpkg-windows",
+      "displayName": "vcpkg-windows",
+      "description": "Use Ninja generator and vcpkg toolchain from D:/DevTools/vcpkg",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build",
+      "cacheVariables": {
+        "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
+      }
     }
   ]
 }
