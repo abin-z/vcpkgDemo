@@ -78,7 +78,7 @@ rules.ninja
 *.DS_Store
 
 # 缓存文件
-.chche
+.cache
 # 生成的编译命令文件
 compile_commands.json
 
