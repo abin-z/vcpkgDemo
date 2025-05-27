@@ -3,10 +3,11 @@
 #include <CLI/CLI.hpp>
 #include <fstream>
 #include <nlohmann/json.hpp>
+#include <range/v3/all.hpp>  // range-v3 主头文件
 
 int main(int argc, char** argv)
 {
-  CLI::App app{"🧪 A delightful demo using CLI11, fmt & nlohmann/json 🔧"};
+  CLI::App app{"🧪 A delightful demo using CLI11, fmt, nlohmann/json & range-v3 🔧"};
 
   bool verbose = false;
   std::string name = "World";
@@ -24,24 +25,42 @@ int main(int argc, char** argv)
   if (verbose)
   {
     fmt::print("🗯️ Verbose mode is ON — you're in for *lots* of output!\n");
-    fmt::print("📦 Powered by CLI11 + fmt + nlohmann/json\n");
+    fmt::print("📦 Powered by CLI11 + fmt + nlohmann/json + range-v3\n");
   }
   else
   {
     fmt::print("🤫 Running in quiet mode. Use -v to hear my thoughts.\n");
   }
 
-  // Create a JSON object and populate it with some data
+  // 🌟 使用 range-v3 将 name 字符转换为大写
+  auto uppercased = name | ranges::views::transform([](char c) { return static_cast<char>(std::toupper(c)); });
+
+  std::string upper_name(uppercased.begin(), uppercased.end());
+  fmt::print("🔠 Uppercased name via range-v3: {}\n", upper_name);
+
+  // 🌟 构造整数序列并处理：筛选偶数 -> 平方 -> 求和
+  std::vector<int> numbers = {1, 2, 3, 4, 5, 6};
+
+  auto even_squares = numbers | ranges::views::filter([](int n) { return n % 2 == 0; }) |
+                      ranges::views::transform([](int n) { return n * n; });
+
+  int sum = ranges::accumulate(even_squares, 0);
+  fmt::print("🧮 Sum of squares of even numbers [2,4,6]: {}\n", sum);
+
+  // ✍️ 创建 JSON 对象
   nlohmann::json j;
   j["greeting"] = fmt::format("Hello, {}!", name);
   j["verbose"] = verbose;
   j["output_file"] = output_file;
+  j["name_upper"] = upper_name;
+  j["even_squares"] = even_squares | ranges::to<std::vector<int>>;
+  j["even_squares_sum"] = sum;
 
-  // Optionally, write the JSON data to a file
+  // 💾 输出到文件
   std::ofstream file(output_file);
   if (file.is_open())
   {
-    file << j.dump(2);  // Write with indentation for readability
+    file << j.dump(2);  // 带缩进输出
     fmt::print("📄 Output written to: {}\n", output_file);
   }
   else
