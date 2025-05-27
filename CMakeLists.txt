@@ -27,6 +27,7 @@ project(vcpkgDemo LANGUAGES C CXX VERSION 0.9.0)
 find_package(fmt CONFIG REQUIRED)
 find_package(CLI11 CONFIG REQUIRED)
 find_package(nlohmann_json CONFIG REQUIRED)
+find_package(range-v3 CONFIG REQUIRED)
 
 # 启用测试功能
 include(CTest)  # 启用 CTest 框架
