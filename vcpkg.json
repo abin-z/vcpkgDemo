@@ -3,6 +3,7 @@
     "cli11",
     "fmt",
     "nlohmann-json",
-    "range-v3"
+    "range-v3",
+    "spdlog"
   ]
 }
