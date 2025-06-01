@@ -4,6 +4,7 @@
     "fmt",
     "nlohmann-json",
     "range-v3",
-    "spdlog"
+    "spdlog",
+    "cppcodec"
   ]
 }
