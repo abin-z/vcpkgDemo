@@ -14,7 +14,7 @@ add_executable(base64 base64.cpp)
 target_include_directories(base64
     PRIVATE "${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/include"
 )
-
+target_link_libraries(base64 PRIVATE fmt::fmt)        # fmt库
 # target_link_libraries(base64 PRIVATE cppcodec) 纯头文件库不需要链接
 # 像这么路径写死也不太好
 # target_include_directories(base64 PRIVATE /home/abin/workspace/vcpkgDemo/build/vcpkg-linux-debug/vcpkg_installed/x64-linux/include)
