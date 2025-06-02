@@ -3,12 +3,16 @@
 #include <spdlog/spdlog.h>
 
 #include <CLI/CLI.hpp>
+#include <cstdlib>
 #include <fstream>
 #include <nlohmann/json.hpp>
 #include <range/v3/all.hpp>
 
 int main(int argc, char** argv)
 {
+#ifdef _WIN32
+  std::system("chcp 65001");
+#endif
   CLI::App app{"🧪 A delightful demo using CLI11, fmt, spdlog, nlohmann/json & range-v3 🔧"};
 
   bool verbose = false;
