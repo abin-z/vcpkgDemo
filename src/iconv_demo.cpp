@@ -54,10 +54,10 @@ int main()
   *outbuf = '\0';
 
   // 输出原始输入字节（GBK编码，不一定能正确显示）
-  std::cout << "Input: " << input << '\n';
+  std::cout << "Input(GBK): " << input << '\n';
 
   // 输出转换后的字符串（UTF-8编码，能正确显示“你好”）
-  std::cout << "Converted: " << output << '\n';
+  std::cout << "Converted(UTF-8): " << output << '\n';
 
   // 关闭转换描述符，释放资源
   iconv_close(cd);
