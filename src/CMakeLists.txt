@@ -9,7 +9,7 @@ target_link_libraries(main PRIVATE spdlog::spdlog)      # spdlog库
 
 
 add_executable(iconv_demo iconv_demo.cpp)
-target_link_libraries(iconv_demo PRIVATE iconv)  # libiconv库
+target_link_libraries(main PRIVATE Iconv::Iconv)  # Iconv库
 
 
 # 这个变量是 vcpkg 自动设置的，指向安装目录

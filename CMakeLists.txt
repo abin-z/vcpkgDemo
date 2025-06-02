@@ -29,8 +29,7 @@ find_package(CLI11 CONFIG REQUIRED)
 find_package(nlohmann_json CONFIG REQUIRED)
 find_package(range-v3 CONFIG REQUIRED)
 find_package(spdlog REQUIRED)
-find_package(libiconv REQUIRED)
-
+find_package(Iconv REQUIRED)
 # 启用测试功能
 include(CTest)  # 启用 CTest 框架
 enable_testing()  # 允许 add_test() 添加测试, 须放在 add_test() 之前
