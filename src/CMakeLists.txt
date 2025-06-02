@@ -7,6 +7,11 @@ target_link_libraries(main PRIVATE nlohmann_json::nlohmann_json)    # nlohmann_j
 target_link_libraries(main PRIVATE range-v3::range-v3)  # range-v3库
 target_link_libraries(main PRIVATE spdlog::spdlog)      # spdlog库
 
+
+add_executable(iconv_demo iconv_demo.cpp)
+target_link_libraries(iconv_demo PRIVATE iconv)  # libiconv库
+
+
 # 这个变量是 vcpkg 自动设置的，指向安装目录
 message(STATUS "VCPKG_INSTALLED_DIR = ${VCPKG_INSTALLED_DIR}")
 add_executable(base64 base64.cpp)
