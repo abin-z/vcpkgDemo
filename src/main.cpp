@@ -92,5 +92,20 @@ int main(int argc, char** argv)
     spdlog::error("⚠️ Failed to open the file: {}", output_file);
   }
 
+  try
+  {
+    nlohmann::json cfg = R"({ "id": 123, "name": "Tom" })"_json;
+    int id;
+    std::string name;
+
+    cfg.at("id").get_to(id);      // 等价于 id = j.at("id").get<int>();
+    cfg.at("name").get_to(name);  // 等价于 name = j.at("name").get<std::string>();
+    spdlog::info("📖 Read JSON: id = {}, name = {}", id, name);
+  }
+  catch (const std::exception& e)
+  {
+    spdlog::error("💥 Error reading JSON: {}", e.what());
+  }
+
   return 0;
 }
